@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import React,{useState, useEffect} from "react";
+import {gsap} from "gsap";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DateAndClock from "./DateAndClock/DateAndClock";
 import Weather from "./Weather/Weather";
+// import Football from "./Football/Football";
 
 
 const Title = (props) => {
@@ -14,6 +16,8 @@ const Title = (props) => {
         </div>
     );
 }
+
+
 
 function App() {
     const [day, setDay] = useState("");
@@ -26,11 +30,17 @@ function App() {
         setDay(hari);
     },[]);
 
+    useEffect(() => {
+        gsap.to(".cs-img", {duration: 3, rotation: "+=360", repeat: -1, ease: "linear",});
+    },[]);
+
+
   return (
     <div className="App container">
       <Title day={day} />
         <DateAndClock />
         <Weather />
+        <img src={'/images/test.png'} className="cs-img mt-5" width={200}/>
     </div>
   );
 }
