@@ -3,6 +3,7 @@ import React,{useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DateAndClock from "./DateAndClock/DateAndClock";
+import Weather from "./Weather/Weather";
 
 
 const Title = (props) => {
@@ -29,6 +30,7 @@ function App() {
     <div className="App container">
       <Title day={day} />
         <DateAndClock />
+        <Weather />
     </div>
   );
 }
