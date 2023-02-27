@@ -5,13 +5,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DateAndClock from "./DateAndClock/DateAndClock";
 import Weather from "./Weather/Weather";
-// import Football from "./Football/Football";
+import Football from "./Football/Football";
 
 
 const Title = (props) => {
     return (
         <div>
-            <h1 className={"fw-bold"}>Hello, Rifki06</h1>
+            <h1 className={"fw-bold"}>Hello, BakulPentol</h1>
             <p className={"text-muted"}>Selamat Hari {props.day}</p>
         </div>
     );
@@ -32,6 +32,7 @@ function App() {
 
     useEffect(() => {
         gsap.to(".cs-img", {duration: 3, rotation: "+=360", repeat: -1, ease: "linear",});
+        gsap.to(".cs-img2", {duration: 3, rotation: "-=360", repeat: -1, ease: "linear",});
     },[]);
 
 
@@ -40,7 +41,11 @@ function App() {
       <Title day={day} />
         <DateAndClock />
         <Weather />
-        <img src={'/images/test.png'} className="cs-img mt-5" width={200}/>
+        <Football />
+        <div className="row-cols-2">
+            <img src={'/images/test.png'} className="cs-img mt-5 p-4 col-2" width={20}/>
+            <img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4 col-2" width={20}/>
+        </div>
     </div>
   );
 }
