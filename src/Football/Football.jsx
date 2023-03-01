@@ -27,13 +27,23 @@ function Football() {
 
     if (data) {
     return (
-        <div>
-            <h1>Barcelona Match</h1>
-            <h2>{data.response[0].teams.home.name}{data.response[0].goals.home}</h2>
-            <h2>{data.response[0].teams.away.name}{data.response[0].goals.away}</h2>
-
-        </div>
+        <>
+            <div className="container bg-light rounded-3 mt-3 p-3">
+            <p>Barcelona Match</p>
+            <p>{data.response[0].teams.home.name}{data.response[0].goals.home}</p>
+            <p>{data.response[0].teams.away.name}{data.response[0].goals.away}</p>
+            </div>
+        </>
     );
+    } else {
+        return (
+            <div>
+                <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                Loading Masbro..
+            </div>
+        );
     }
 }
 

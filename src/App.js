@@ -11,7 +11,7 @@ import Football from "./Football/Football";
 const Title = (props) => {
     return (
         <div>
-            <h1 className={"fw-bold"}>Hello, BakulPentol</h1>
+            <h1 className={"fw-bold"}>Hello, CilokSlayer</h1>
             <p className={"text-muted"}>Selamat Hari {props.day}</p>
         </div>
     );
@@ -37,14 +37,20 @@ function App() {
 
 
   return (
-    <div className="App container">
-      <Title day={day} />
-        <DateAndClock />
-        <Weather />
-        <Football />
-        <div className="row-cols-2">
-            <img src={'/images/test.png'} className="cs-img mt-5 p-4 col-2" width={20}/>
-            <img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4 col-2" width={20}/>
+    <div className="App container-fluid">
+        <div className="row">
+            <div className="col-3">
+                <Weather />
+                {/*<img src={'/images/test.png'} className="cs-img mt-5 p-4" width={100}/>*/}
+            </div>
+            <div className="col-6 pt-5">
+                <Title day={day} />
+                <DateAndClock />
+            </div>
+            <div className="col-3">
+                <Football />
+                {/*<img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4" width={100}/>*/}
+            </div>
         </div>
     </div>
   );

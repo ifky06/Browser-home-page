@@ -20,6 +20,7 @@ const Weather = () => {
 
                 <p>Temperature: {data.temp_c} °C</p>
                 <p>Condition: {data.condition ? data.condition.text:'-'}</p>
+                <img src={data.condition ? data.condition.icon:'-'}/>
                 <p>Humidity: {data.humidity}%</p>
                 <p>Wind: {data.wind_kph} km/h</p>
         </div>
