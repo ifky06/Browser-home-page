@@ -10,7 +10,7 @@ function Football() {
             .get("https://v3.football.api-sports.io/fixtures?team=529&last=10&timezone=Asia/Jakarta", {
                 method: "GET",
                 headers: {
-                    "X-RapidAPI-Key": "6a024de9812b55fa41e921c7f5753291",
+                    "X-RapidAPI-Key": process.env.REACT_APP_API_FOOTBALL_KEY,
                     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
                 },
             })
@@ -28,10 +28,31 @@ function Football() {
     if (data) {
     return (
         <>
-            <div className="container bg-light rounded-3 mt-3 p-3">
-            <p>Barcelona Match</p>
-            <p>{data.response[0].teams.home.name}{data.response[0].goals.home}</p>
-            <p>{data.response[0].teams.away.name}{data.response[0].goals.away}</p>
+            <div className="container bg-light rounded-3 mt-3 p-3 bg-opacity-75">
+                <p className="fw-bold" >Barcelona Match</p>
+                <div className="row">
+                        <p>{data.response[0].league.name}</p>
+                </div>
+                <div className="row">
+                    <div className="col-4">
+                        <img src={data.response[0].teams.home.logo} width={50} alt="" />
+                        <p>{data.response[0].teams.home.name}</p>
+                    </div>
+                    <div className="col-2  pt-2">
+                        <h2>
+                            {data.response[0].goals.home}
+                        </h2>
+                    </div>
+                    <div className="col-2  pt-2">
+                        <h2>
+                            {data.response[0].goals.away}
+                        </h2>
+                    </div>
+                    <div className="col-4">
+                        <img src={data.response[0].teams.away.logo} width={50} alt="" />
+                        <p>{data.response[0].teams.away.name}</p>
+                    </div>
+                </div>
             </div>
         </>
     );

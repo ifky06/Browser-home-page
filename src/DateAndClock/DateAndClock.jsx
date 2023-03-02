@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react"
+import './DateAndClock.css'
 
 const formNumber = (number) => {
   return number < 10 ? `0${number}` : number;
@@ -24,26 +25,15 @@ const DateAndClock = () => {
   const options = {day: 'numeric', month: 'long', year: 'numeric'};
   return (
     <>
-      <div className="row justify-content-center">
-        <div className="col-2 text-center">
-          <div className="card bg-secondary text-white pb-2 pt-2">
-            <h1 id="jam">{time.hours}</h1>
-            <label htmlFor="">Jam</label>
-          </div>
-        </div>
-        <div className="col-2 text-center">
-          <div className="card bg-secondary text-white pb-2 pt-2" >
+        <div className="text-center d-flex justify-content-center">
+            <h1 id="jam" className="ms-5">{time.hours}
+            </h1>
+            <p htmlFor="" className="align-self-end pb-2 fs-3 mx-2">:</p>
             <h1 id="menit">{time.minutes}</h1>
-            <label htmlFor="">Menit</label>
-          </div>
+            <p htmlFor="" className="align-self-end pb-2 fs-3 mx-2">:</p>
+            <p id="detik" className="align-self-end pb-2 fs-3 ">{time.seconds}</p>
+            {/*<label htmlFor="">Detik</label>*/}
         </div>
-        <div className="col-2 text-center">
-          <div className="card bg-secondary text-white pb-2 pt-2" >
-            <h1 id="detik">{time.seconds}</h1>
-            <label htmlFor="">Detik</label>
-          </div>
-        </div>
-      </div>
       <div>{date.toLocaleDateString('id-ID',options)}</div>
       <div>{date.toLocaleTimeString()}</div>
     </>

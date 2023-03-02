@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 const Weather = () => {
     const [data, setData] = useState({});
     useEffect(() => {
-        const API_KEY="4dbef11b85694adeb3945346232602";
+        const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
         const URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=malang&aqi=no`;
 
         const fetchData = async () => {

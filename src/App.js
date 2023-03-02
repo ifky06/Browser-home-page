@@ -37,17 +37,17 @@ function App() {
 
 
   return (
-    <div className="App container-fluid">
+    <div className="App container-fluid text-light bg-black bg-opacity-75" >
         <div className="row">
-            <div className="col-3">
+            <div className="col-md-3">
                 <Weather />
                 {/*<img src={'/images/test.png'} className="cs-img mt-5 p-4" width={100}/>*/}
             </div>
-            <div className="col-6 pt-5">
+            <div className="col-md-6 pt-3">
                 <Title day={day} />
                 <DateAndClock />
             </div>
-            <div className="col-3">
+            <div className="col-md-3">
                 <Football />
                 {/*<img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4" width={100}/>*/}
             </div>

@@ -6,12 +6,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('../public/images/wall.jpg') no-repeat center center fixed;
+  background: url('../public/images/wall2.png') no-repeat center center fixed;
   background-size: cover;
+  height: 100vh;
+  /*filter: brightness(0);*/
   /*overflow: hidden;*/
+}
+* {
+  margin: 0;
+    padding: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  height: 100%;
+}
+
+
