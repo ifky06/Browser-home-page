@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DateAndClock from "./DateAndClock/DateAndClock";
 import Weather from "./Weather/Weather";
 import Football from "./Football/Football";
+import SearchBox from "./SearchBox/SearchBox";
 
 
 const Title = (props) => {
@@ -44,8 +45,13 @@ function App() {
                 {/*<img src={'/images/test.png'} className="cs-img mt-5 p-4" width={100}/>*/}
             </div>
             <div className="col-md-6 pt-3">
-                <Title day={day} />
-                <DateAndClock />
+                <div className="row">
+                    <Title day={day} />
+                    <DateAndClock />
+                </div>
+                <div className="row">
+                    <SearchBox />
+                </div>
             </div>
             <div className="col-md-3">
                 <Football />
