@@ -7,6 +7,7 @@ import DateAndClock from "./DateAndClock/DateAndClock";
 import Weather from "./Weather/Weather";
 import Football from "./Football/Football";
 import SearchBox from "./SearchBox/SearchBox";
+import TopSites from "./TopSites/TopSites";
 
 
 const Title = (props) => {
@@ -51,6 +52,9 @@ function App() {
                 </div>
                 <div className="row">
                     <SearchBox />
+                </div>
+                <div className="row">
+                    <TopSites />
                 </div>
             </div>
             <div className="col-md-3">
