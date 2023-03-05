@@ -10,11 +10,28 @@ import SearchBox from "./SearchBox/SearchBox";
 import TopSites from "./TopSites/TopSites";
 
 
-const Title = (props) => {
+const Title = () => {
+    const [greeting, setGreeting] = useState("");
+
+    useEffect(() => {
+        let today = new Date();
+        let curHr = today.getHours();
+
+        if (curHr >= 5 && curHr < 10) {
+            setGreeting("Good Morning");
+        } else if (curHr >=10 && curHr < 15) {
+            setGreeting("Good Afternoon");
+        } else if (curHr >=15 && curHr < 19) {
+            setGreeting("Good Evening");
+        } else {
+            setGreeting("Good Night");
+        }
+    },[]);
+
     return (
-        <div>
-            <h1 className={"fw-bold"}>Hello, CilokSlayer</h1>
-            <p className={"text-muted"}>Selamat Hari {props.day}</p>
+        <div className="pt-3">
+            <h1 className="fw-bold">{greeting},</h1>
+            <h1 className="fw-bold">CilokSlayer</h1>
         </div>
     );
 }
@@ -24,13 +41,7 @@ const Title = (props) => {
 function App() {
     const [day, setDay] = useState("");
 
-    useEffect(() => {
-        let today = new Date();
-        let day = today.getDay();
-        let daylist = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        let hari = daylist[day];
-        setDay(hari);
-    },[]);
+
 
     useEffect(() => {
         gsap.to(".cs-img", {duration: 3, rotation: "+=360", repeat: -1, ease: "linear",});
@@ -45,10 +56,10 @@ function App() {
                 <Weather />
                 {/*<img src={'/images/test.png'} className="cs-img mt-5 p-4" width={100}/>*/}
             </div>
-            <div className="col-md-6 pt-3">
+            <div className="col-md-6 pt-3 mt-2 ">
                 <div className="row">
                     <Title day={day} />
-                    <DateAndClock />
+                    <DateAndClock dayName={day} />
                 </div>
                 <div className="row">
                     <SearchBox />
