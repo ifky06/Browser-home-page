@@ -69,7 +69,7 @@ function App() {
                 </div>
             </div>
             <div className="col-md-3">
-                <Football />
+                {/*<Football />*/}
                 {/*<img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4" width={100}/>*/}
             </div>
         </div>
