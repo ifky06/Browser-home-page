@@ -30,21 +30,28 @@ const SearchBox = () => {
     }
     //
     const suggestions = () => {
-            return  getHistory().map((item, index) => {
+        if (getHistory() != null && inputValue !== '') {
+            let count = 0;
+            return getHistory().map((item, index) => {
                 let list = [];
                 if (item.includes(inputValue.toLowerCase()) || inputValue === '') {
-                    list.push(<li className="mx-3 c-hover" key={index} onClick={setInputValue.bind(this, item)}><a className="dropdown-item p-1 border-bottom border-light text-start">{item}</a></li>)
+                    list.push(<li className="mx-3 c-hover" key={index} onClick={setInputValue.bind(this, item)}><a
+                        className="dropdown-item p-1 border-bottom border-light text-start">{item}</a></li>)
                     // list.push(<li className='cursor-pointer' key={index} onClick={setInputValue.bind(this, item)}>{item}</li>);
+                    count++;
                 }
-                // console.log(getHistory().length - 2);
-                if (index === getHistory().length - 1 && list.length > 0) {
-                    list.push(<li key={index+1} className="mx-3 c-hover" onClick={() => {
+                if (index === getHistory().length - 1 && count > 0) {
+                    list.push(<li key={index + 1} className="mx-3 c-hover" onClick={() => {
                         localStorage.setItem('history', null)
                         setInputValue('')
                     }}><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>);
                 }
+                console.log(count)
                 return (<>{list}</>);
             })
+        }else {
+            return null
+        }
     }
 
     return (
@@ -67,7 +74,8 @@ const SearchBox = () => {
                         padding: '0px',
                     }}>
                         {
-                            (getHistory() != null && inputValue !== '')? suggestions() : null
+                            // (getHistory() != null && inputValue !== '')? suggestions() : null
+                            suggestions()
                         }
                     </ul>
             </div>
