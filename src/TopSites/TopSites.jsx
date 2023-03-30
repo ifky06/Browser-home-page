@@ -3,27 +3,27 @@ import { FaYoutube, FaGithub, FaFacebook, FaInstagram, FaPinterest } from 'react
 
 const sites = [
     {
-        id: 1,
+        id: 'top1',
         name: 'Youtube',
         url: 'https://www.youtube.com/',
         icon: <FaYoutube className="text-light" size='2.5em'/>
     },{
-        id: 2,
+        id: 'top2',
         name: 'Github',
         url: 'https://github.com/',
         icon: <FaGithub className="text-light" size='2.5em'/>
     },{
-        id: 3,
+        id: 'top3',
         name: 'Facebook',
         url: 'https://www.facebook.com/',
         icon: <FaFacebook className="text-light" size='2.5em'/>
     },{
-        id: 4,
+        id: 'top4',
         name: 'Instagram',
         url: 'https://www.instagram.com/',
         icon: <FaInstagram className="text-light" size='2.5em'/>
     },{
-        id: 5,
+        id: 'top5',
         name: 'Pinterest',
         url: 'https://www.pinterest.com/',
         icon: <FaPinterest className="text-light" size='2.5em'/>

@@ -4,6 +4,7 @@ import './SearchBox.css';
 const SearchBox = () => {
     const [inputValue, setInputValue] = useState('');
 
+    const getHistory = () => JSON.parse(localStorage.getItem('history'));
     const handleInput = (event) => {
         // event.preventDefault();
         setInputValue(event.target.value);
@@ -13,13 +14,38 @@ const SearchBox = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        if (getHistory().find(item => item === inputValue.toLowerCase()) === undefined) {
+            if (getHistory()===null) {
+                localStorage.setItem('history', JSON.stringify([inputValue.toLowerCase()]));
+            }else {
+                localStorage.setItem('history', JSON.stringify([...getHistory(), inputValue.toLowerCase()]));
+            }
+        }
+
         window.location.href = `https://www.google.com/search?q=${inputValue.replace(/\s+/g, "+")}`;
     }
 
     const handleGoogle = () => {
         window.location.href = `https://www.google.com/`;
     }
-
+    //
+    const suggestions = () => {
+            return  getHistory().map((item, index) => {
+                let list = [];
+                if (item.includes(inputValue.toLowerCase()) || inputValue === '') {
+                    list.push(<li className="mx-3 c-hover" key={index} onClick={setInputValue.bind(this, item)}><a className="dropdown-item p-1 border-bottom border-light text-start">{item}</a></li>)
+                    // list.push(<li className='cursor-pointer' key={index} onClick={setInputValue.bind(this, item)}>{item}</li>);
+                }
+                // console.log(getHistory().length - 2);
+                if (index === getHistory().length - 1 && list.length > 0) {
+                    list.push(<li key={index+1} className="mx-3 c-hover" onClick={() => {
+                        localStorage.setItem('history', null)
+                        setInputValue('')
+                    }}><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>);
+                }
+                return (<>{list}</>);
+            })
+    }
 
     return (
         <>
@@ -40,10 +66,9 @@ const SearchBox = () => {
                         marginLeft:'46px',
                         padding: '0px',
                     }}>
-                        <li className="mx-3 c-hover"><a className="dropdown-item p-1 border-bottom border-light text-start" href="#">Action</a></li>
-                        <li className="mx-3 c-hover"><a className="dropdown-item p-1 border-bottom border-light text-start" href="#">Another action</a></li>
-                        <li className="mx-3 c-hover"><a className="dropdown-item p-1 border-bottom border-light text-start" href="#">Something else here</a></li>
-                        <li className="mx-3 c-hover"><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>
+                        {
+                            (getHistory() != null && inputValue !== '')? suggestions() : null
+                        }
                     </ul>
             </div>
                 </form>
