@@ -17,7 +17,7 @@ const SearchBox = () => {
         if (getHistory()===null) {
             localStorage.setItem('history', JSON.stringify([inputValue.toLowerCase()]));
         }else if (getHistory().find(item => item === inputValue.toLowerCase()) === undefined){
-            localStorage.setItem('history', JSON.stringify([...getHistory(), inputValue.toLowerCase()]));
+            localStorage.setItem('history', JSON.stringify([inputValue.toLowerCase(), ...getHistory()]));
         }
 
         window.location.href = `https://www.google.com/search?q=${inputValue.replace(/\s+/g, "+")}`;
@@ -36,24 +36,23 @@ const SearchBox = () => {
     const suggestions = () => {
         if (getHistory() != null && inputValue !== '') {
             let count = 0;
-            return getHistory().map((item, index) => {
-                let list = [];
-                if (item.includes(inputValue.toLowerCase()) || inputValue === '') {
-                    list.push(<li className="mx-3 c-hover" key={index} onClick={setInputValue.bind(this, item)}><a
-                        className="dropdown-item p-1 border-bottom border-light text-start">{item}</a></li>)
-                    // list.push(<li className='cursor-pointer' key={index} onClick={setInputValue.bind(this, item)}>{item}</li>);
+            let list = [];
+            for (let i = 0; i < getHistory().length; i++) {
+                if (count > 4) break;
+                if (getHistory()[i].includes(inputValue.toLowerCase()) || inputValue === '') {
+                    list.push(<li className="mx-3 c-hover" key={i} onClick={setInputValue.bind(this, getHistory()[i])}>
+                        <a
+                            className="dropdown-item p-1 border-bottom border-light text-start">{getHistory()[i]}</a>
+                    </li>)
+                    // list.push(<li className='cursor-pointer' key={i} onClick={setInputValue.bind(this, item)}>{item}</li>);
                     count++;
                 }
-                if (index === getHistory().length - 1 && count > 0) {
-                    list.push(<li key={index + 1} className="mx-3 c-hover" onClick={() => {
-                        localStorage.setItem('history', null)
-                        setInputValue('')
-                    }}><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>);
-                }
-                return (<>{list}</>);
-            })
-        }else {
-            return <></>
+            }
+            if (count > 0) list.push(<li key={91} className="mx-3 c-hover" onClick={() => {
+                localStorage.setItem('history', null)
+                setInputValue('')
+            }}><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>);
+            return <>{list}</>
         }
     }
 

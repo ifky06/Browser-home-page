@@ -30,8 +30,7 @@ const Title = () => {
 
     return (
         <div className="pt-3">
-            <h1 className="fw-bold">{greeting},</h1>
-            <h1 className="fw-bold">CilokSlayer</h1>
+            <h2 className="fw-bold">{greeting}, Rifki06</h2>
         </div>
     );
 }

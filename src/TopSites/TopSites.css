@@ -1,0 +1,8 @@
+.c-card{
+    width: 7rem;
+    height: 7rem;
+    cursor: pointer;
+}
+.c-card:hover{
+    background-color: #384144!important;
+}

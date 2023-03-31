@@ -1,5 +1,6 @@
-import React,{useState} from "react";
+import React from "react";
 import { FaYoutube, FaGithub, FaFacebook, FaInstagram, FaPinterest } from 'react-icons/fa';
+import './TopSites.css'
 
 const sites = [
     {
@@ -35,11 +36,6 @@ const sites = [
 
 
 const TopSites = () => {
-    const style = {
-        width: '7rem',
-        height: '7rem',
-        cursor: 'pointer',
-    }
 
     const handleSite = (url) => {
         window.location.href = url;
@@ -49,8 +45,8 @@ const TopSites = () => {
         <>
             <div className="d-flex flex-wrap flex-row justify-content-center">
                 {sites.map((site) => (
-                    <div key={site.id} className="card mx-2 my-4 rounded-0 bg-dark bg-opacity-75 border-light px-3 pb-2"
-                    style={style} onClick={handleSite.bind(this,site.url)} >
+                    <div key={site.id} className="card c-card mx-2 my-4 rounded-0 bg-dark bg-opacity-75 border-light px-3 pb-2"
+                     onClick={handleSite.bind(this,site.url)} >
                         <div className="card-body">
                             {site.icon}
                         </div>
