@@ -14,12 +14,10 @@ const SearchBox = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (getHistory().find(item => item === inputValue.toLowerCase()) === undefined) {
-            if (getHistory()===null) {
-                localStorage.setItem('history', JSON.stringify([inputValue.toLowerCase()]));
-            }else {
-                localStorage.setItem('history', JSON.stringify([...getHistory(), inputValue.toLowerCase()]));
-            }
+        if (getHistory()===null) {
+            localStorage.setItem('history', JSON.stringify([inputValue.toLowerCase()]));
+        }else if (getHistory().find(item => item === inputValue.toLowerCase()) === undefined){
+            localStorage.setItem('history', JSON.stringify([...getHistory(), inputValue.toLowerCase()]));
         }
 
         window.location.href = `https://www.google.com/search?q=${inputValue.replace(/\s+/g, "+")}`;
@@ -27,6 +25,12 @@ const SearchBox = () => {
 
     const handleGoogle = () => {
         window.location.href = `https://www.google.com/`;
+    }
+
+    const handleKeydown = (event) => {
+        if (event.keyCode === 13 && (inputValue !== '')) {
+            handleSubmit(event);
+        }
     }
     //
     const suggestions = () => {
@@ -46,11 +50,10 @@ const SearchBox = () => {
                         setInputValue('')
                     }}><a className="dropdown-item p-1 text-danger" href="#">Clear All</a></li>);
                 }
-                console.log(count)
                 return (<>{list}</>);
             })
         }else {
-            return null
+            return <></>
         }
     }
 
@@ -63,7 +66,7 @@ const SearchBox = () => {
                     {/*<FaGoogle/>*/}
                 </span>
                 <input type="text" className="form-control bg-dark text-light  rounded-0 bg-opacity-75" placeholder="Ketikkan Sesuatu" aria-label="Username"
-                       value={inputValue} onChange={handleInput} data-bs-toggle="dropdown" aria-expanded="true" />
+                       value={inputValue} onChange={handleInput} onKeyDown={handleKeydown} data-bs-toggle="dropdown" aria-expanded="true" />
 
                     <ul className="position-absolute bg-dark text-light" style={{
                         zIndex: 1,
