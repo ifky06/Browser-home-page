@@ -8,6 +8,7 @@ import Weather from "./Weather/Weather";
 import Football from "./Football/Football";
 import SearchBox from "./SearchBox/SearchBox";
 import TopSites from "./TopSites/TopSites";
+import Notes from "./Notes/Notes";
 
 
 const Title = () => {
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <div className="App container-fluid text-light bg-black bg-opacity-75" >
-        <div className="row">
+        <div className="row" style={{height:'100%'}}>
             <div className="col-md-3">
                 <Weather />
                 {/*<img src={'/images/test.png'} className="cs-img mt-5 p-4" width={100}/>*/}
@@ -67,7 +68,8 @@ function App() {
                     <TopSites />
                 </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 d-flex align-items-center justify-content-center"style={{height:'100vh'}}>
+                <Notes />
                 {/*<Football />*/}
                 {/*<img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4" width={100}/>*/}
             </div>
