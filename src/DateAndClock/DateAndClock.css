@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap');
+
 #jam, #menit{
     font-size: 100pt;
     font-weight: bold;
     color: #fff;
     text-shadow: 0 0 10px #000;
+}
+.c-font{
+    font-family: 'Roboto Mono', monospace;
 }

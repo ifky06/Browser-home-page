@@ -37,13 +37,12 @@ const DateAndClock = (props) => {
   return (
     <>
         <div className="text-center d-flex justify-content-center">
-            <h1 id="jam" className="ms-5">{dateTime.hours}
+            <h1 id="jam" className="c-font ms-5">{dateTime.hours}
             </h1>
-            <p htmlFor="" className="align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
-            <h1 id="menit">{dateTime.minutes}</h1>
-            <p htmlFor="" className="align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
-            <p id="detik" className="align-self-end fw-bolder pb-2 fs-3 ">{dateTime.seconds}</p>
-            {/*<label htmlFor="">Detik</label>*/}
+            <p htmlFor="" className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
+            <h1 id="menit" className="c-font">{dateTime.minutes}</h1>
+            <p htmlFor="" className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
+            <p id="detik" className="c-font align-self-end fw-bolder pb-2 fs-3 ">{dateTime.seconds}</p>
         </div>
       <div>{day}, {dateTime.day} {dateTime.month} {dateTime.year}</div>
     </>
