@@ -62,7 +62,7 @@ const AskGPT = () => {
 
     return (
         <>
-            <div id='dialogue' className='position-fixed card border-light bg-dark c-dialogue rounded-0 p-2'>
+            <div id='dialogue' className='position-fixed card border-light bg-dark c-dialogue p-2'>
                 <div className='card position-absolute c-dialogue-arrow bg-dark rounded-0 border-light border-start-0 border-top-0'>
                 </div>
                 Sepertinya kamu ingin bertanya sesuatu
