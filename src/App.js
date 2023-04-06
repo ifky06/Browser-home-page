@@ -44,13 +44,6 @@ function App() {
     const [day, setDay] = useState("");
 
 
-
-    useEffect(() => {
-        gsap.to(".cs-img", {duration: 3, rotation: "+=360", repeat: -1, ease: "linear",});
-        gsap.to(".cs-img2", {duration: 3, rotation: "-=360", repeat: -1, ease: "linear",});
-    },[]);
-
-
   return (
     <div className="App container-fluid text-light bg-black bg-opacity-75" >
         <div className="row" style={{height:'100%'}}>

@@ -47,7 +47,7 @@ const TopSites = () => {
                 {sites.map((site) => (
                     <div key={site.id} className="card c-card mx-2 my-4 rounded-0 bg-dark bg-opacity-75 border-light px-3 pb-2"
                      onClick={handleSite.bind(this,site.url)} >
-                        <div className="card-body">
+                        <div className="card-body c-card-body">
                             {site.icon}
                         </div>
                         {site.name}

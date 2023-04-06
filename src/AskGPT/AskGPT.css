@@ -1,0 +1,15 @@
+.c-dialogue {
+    bottom: 220px;
+    left: 30px;
+    width: 200px;
+    display: none;
+}
+
+.c-dialogue-arrow {
+    width: 20px;
+    height: 20px;
+    rotate: 45deg;
+    bottom: -11px;
+    left: 85px;
+    z-index: -1;
+}

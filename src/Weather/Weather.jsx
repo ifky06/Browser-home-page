@@ -1,34 +1,34 @@
 import React,{useState,useEffect} from "react";
 import { BsDropletFill, BsWind } from 'react-icons/bs';
+import {BounceLoader} from "react-spinners";
 
 const Weather = () => {
-    const [data, setData] = useState({});
+    const [data, setData] = useState();
     useEffect(() => {
         const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
         const URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=malang&aqi=no`;
 
-        const fetchData = async () => {
-            const response = await fetch(URL);
-            const json = await response.json();
-            setData(json.current);
-        };
-        fetchData();
+        setTimeout(() => {
+            const fetchData = async () => {
+                const response = await fetch(URL);
+                const json = await response.json();
+                setData(json.current);
+            };
+            fetchData();
+        }, 1000);
     }, []);
 
     const weather = () => {
         if(!data){
             return (
-            <>
-                <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-                Loading Masbro..
-            </>
+            <div className='w-100 d-flex justify-content-center align-items-center' style={{height:128}}>
+                <BounceLoader color={'#F8F9FA'} size={50} />
+            </div>
             );
         }
 
         return (
-            <div className="d-flex flex-column justify-content-center mt-3" style={{width:'65%'}}>
+            <>
                 <div className="row ">
                     <p className="pt-1 m-0 pb-0 fw-bold fs-4">Malang</p>
                 </div>
@@ -50,14 +50,14 @@ const Weather = () => {
                             <BsWind className="my-0" size={10}/> {data.wind_kph} km/h
                         </span>
                 </div>
-            </div>
+            </>
         );
     }
 
     return (
-        <>
+        <div className="d-flex flex-column justify-content-center mt-3" style={{width:'65%'}}>
             {weather()}
-        </>
+        </div>
     );
 }
 

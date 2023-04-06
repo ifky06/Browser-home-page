@@ -6,3 +6,7 @@
 .c-card:hover{
     background-color: #384144!important;
 }
+.c-card:hover > .c-card-body{
+    scale: 1.1!important;
+    transition: 0.2s;
+}

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {gsap} from "gsap";
+import './AskGPT.css'
 
 const AskGPT = () => {
     const [pic, setPic] = useState('/images/AskGPT/Unactive.png');
@@ -8,9 +9,13 @@ const AskGPT = () => {
 
     const changePic = () => {
         setPic('/images/AskGPT/Active.png');
+        gsap.fromTo('#dialogue' , {opacity:0 , display:'block'}, {opacity: 1, duration: 0.4});
     }
     const changePicBack = () => {
         setPic('/images/AskGPT/Unactive.png');
+        setTimeout(() => {
+            gsap.fromTo('#dialogue' , {opacity:1 }, {opacity: 0,display: 'none', duration: 0.4});
+        },200);
     }
 
     useEffect(() => {
@@ -23,7 +28,6 @@ const AskGPT = () => {
                 setCount(parseInt(savedCount));
             }
         }
-        console.log(day);
     }, []);
 
     useEffect(() => {
@@ -33,13 +37,12 @@ const AskGPT = () => {
             return;
         }
 
-    }, [count]);
+    }, [count, show]);
 
     const handleClick = () => {
         setCount(count + 1);
         localStorage.setItem('count', (count + 1).toString());
         localStorage.setItem('date', new Date().getDate().toString());
-        console.log(count);
         if (count%5 === 4 && count !== 0) {
             setShow(true);
             // return;
@@ -59,6 +62,12 @@ const AskGPT = () => {
 
     return (
         <>
+            <div id='dialogue' className='position-fixed card border-light bg-dark c-dialogue rounded-0 p-2'>
+                <div className='card position-absolute c-dialogue-arrow bg-dark rounded-0 border-light border-start-0 border-top-0'>
+                </div>
+                Sepertinya kamu ingin bertanya sesuatu
+            </div>
+
             <div className='text-start'>
                 <img src={pic} width={200} alt='AskGPT' onMouseOver={changePic} onMouseOut={changePicBack} onClick={handleClick} />
             </div>
