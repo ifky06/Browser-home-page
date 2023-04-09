@@ -1,12 +1,14 @@
 import React,{useState,useEffect} from "react";
 import { BsDropletFill, BsWind } from 'react-icons/bs';
 import {BounceLoader} from "react-spinners";
+import {useSelector} from "react-redux";
 
 const Weather = () => {
     const [data, setData] = useState();
+    const city = useSelector(state => state.city);
     useEffect(() => {
         const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-        const URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=malang&aqi=no`;
+        const URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city.toLowerCase()}&aqi=no`;
 
         setTimeout(() => {
             const fetchData = async () => {
@@ -16,7 +18,7 @@ const Weather = () => {
             };
             fetchData();
         }, 1000);
-    }, []);
+    }, [city]);
 
     const weather = () => {
         if(!data){
@@ -30,7 +32,7 @@ const Weather = () => {
         return (
             <>
                 <div className="row ">
-                    <p className="pt-1 m-0 pb-0 fw-bold fs-4">Malang</p>
+                    <p className="pt-1 m-0 pb-0 fw-bold fs-4">{city}</p>
                 </div>
                 <div className="row m-0">
                     <div className="col-6 text-end p-0 mb-0">

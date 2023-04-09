@@ -3,47 +3,16 @@ import React,{useState, useEffect} from "react";
 import {gsap} from "gsap";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Title from "./Title/Title";
 import DateAndClock from "./DateAndClock/DateAndClock";
 import Weather from "./Weather/Weather";
 import SearchBox from "./SearchBox/SearchBox";
 import TopSites from "./TopSites/TopSites";
 import Notes from "./Notes/Notes";
 import AskGPT from "./AskGPT/AskGPT";
-
-
-const Title = () => {
-    const [greeting, setGreeting] = useState("");
-
-    useEffect(() => {
-        setInterval(() => {
-            let today = new Date();
-            let curHr = today.getHours();
-
-            if (curHr >= 5 && curHr < 10) {
-                setGreeting("Good Morning");
-            } else if (curHr >=10 && curHr < 15) {
-                setGreeting("Good Afternoon");
-            } else if (curHr >=15 && curHr < 19) {
-                setGreeting("Good Evening");
-            } else {
-                setGreeting("Good Night");
-            }
-        }, 1000);
-    },[]);
-
-    return (
-        <div className="pt-3">
-            <h2 className="fw-bold">{greeting}, Rifki06</h2>
-        </div>
-    );
-}
-
-
+import Setting from "./Setting/Setting";
 
 function App() {
-    const [day, setDay] = useState("");
-
-
   return (
     <div className="App container-fluid text-light bg-black bg-opacity-75" >
         <div className="row" style={{height:'100%'}}>
@@ -54,8 +23,8 @@ function App() {
             </div>
             <div className="col-md-6 pt-3 mt-2 ">
                 <div className="row">
-                    <Title day={day} />
-                    <DateAndClock dayName={day} />
+                    <Title/>
+                    <DateAndClock/>
                 </div>
                 <div className="row">
                     <SearchBox />
@@ -68,6 +37,7 @@ function App() {
                 <Notes />
                 {/*<Football />*/}
                 {/*<img src={'/images/test2.jpg'} className="cs-img2 mt-5 p-4" width={100}/>*/}
+                <Setting />
             </div>
         </div>
     </div>

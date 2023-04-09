@@ -1,0 +1,22 @@
+.c-setting-btn {
+    transition: all 0.3s ease-in-out;
+}
+
+.c-setting-btn.c-rotate {
+    transform: rotate(90deg);
+}
+.c-setting {
+    bottom: 100px;
+    right: 30px;
+    width: 300px;
+    display: none;
+}
+
+.c-setting-arrow {
+    width: 20px;
+    height: 20px;
+    rotate: 45deg;
+    bottom: -11px;
+    right: 20px;
+    z-index: -1;
+}

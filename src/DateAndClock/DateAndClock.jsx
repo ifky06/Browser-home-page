@@ -4,10 +4,9 @@ import './DateAndClock.css'
 const formNumber = (number) => {
   return number < 10 ? `0${number}` : number;
 }
-const DateAndClock = (props) => {
+const DateAndClock = () => {
   const [day, setDay] = useState("");
   const [dateTime, setDateTime] = useState({});
-  const options = {day: 'numeric', month: 'long', year: 'numeric'};
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -39,9 +38,9 @@ const DateAndClock = (props) => {
         <div className="text-center d-flex justify-content-center">
             <h1 id="jam" className="c-font ms-5">{dateTime.hours}
             </h1>
-            <p htmlFor="" className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
+            <p className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
             <h1 id="menit" className="c-font">{dateTime.minutes}</h1>
-            <p htmlFor="" className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
+            <p className="c-font align-self-end fw-bolder pb-2 fs-3 mx-2">:</p>
             <p id="detik" className="c-font align-self-end fw-bolder pb-2 fs-3 ">{dateTime.seconds}</p>
         </div>
       <div>{day}, {dateTime.day} {dateTime.month} {dateTime.year}</div>
