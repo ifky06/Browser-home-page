@@ -1,18 +1,21 @@
 import React, {useEffect, useState} from "react";
 import {gsap} from "gsap";
 import './AskGPT.css'
+import activeImg from './../assets/AskGPT/Active.png';
+import unactiveImg from './../assets/AskGPT/Unactive.png';
+import faq from './../assets/AskGPT/FAQ.png';
 
 const AskGPT = () => {
-    const [pic, setPic] = useState('/images/AskGPT/Unactive.png');
+    const [pic, setPic] = useState(unactiveImg);
     const [count, setCount] = useState(0);
     const [show, setShow] = useState(false);
 
     const changePic = () => {
-        setPic('/images/AskGPT/Active.png');
+        setPic(activeImg);
         gsap.fromTo('#dialogue', {opacity: 0, display: 'block'}, {opacity: 1, duration: 0.4});
     }
     const changePicBack = () => {
-        setPic('/images/AskGPT/Unactive.png');
+        setPic(unactiveImg);
         gsap.fromTo('#dialogue', {opacity: 1}, {opacity: 0, display: 'none', duration: 0.4});
     }
 
@@ -82,7 +85,7 @@ const AskGPT = () => {
                          height: '80%',
                      }}>
                     <div className='card-body h-100 d-flex justify-content-center align-items-center flex-column'>
-                        <img src={'/images/AskGPT/FAQ.png'} width={400} alt='AskGPT' onClick={handlePopup}/>
+                        <img src={faq} width={400} alt='AskGPT' onClick={handlePopup}/>
                         <h5 className='card-title align-middle'>Tanya Mulu Bang, udah {count} kali lo Hari Ini</h5>
                     </div>
                 </div>

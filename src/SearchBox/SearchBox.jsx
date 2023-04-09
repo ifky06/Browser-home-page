@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import './SearchBox.css';
+import googleIcon from './../assets/googleIcon.png';
 
 const SearchBox = () => {
     const [inputValue, setInputValue] = useState('');
@@ -61,7 +62,7 @@ const SearchBox = () => {
                 <form onSubmit={handleSubmit}>
             <div className="input-group mb-3 mt-5 px-3">
                 <span className="input-group-text bg-dark rounded-start-1 bg-opacity-75" id="basic-addon1" onClick={handleGoogle}>
-                    <img src={'/images/googleIcon.png'} alt="G" width={20}/>
+                    <img src={googleIcon} alt="G" width={20}/>
                     {/*<FaGoogle/>*/}
                 </span>
                 <input type="text" className="form-control bg-dark text-light rounded-end bg-opacity-75" placeholder="Ketikkan Sesuatu" aria-label="Username"
